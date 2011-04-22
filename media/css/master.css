@@ -885,13 +885,34 @@ text-align: center;
     padding: 0;
 }
 
-#contact_list ul li a {
+#events_icons{
+margin-top: 10px;
+margin-bottom: 10px;
+}
+#events .icons{
+    margin-left: 20px;
+
+    height: 60px;
+
+}
+
+#events p{
+    margin-left: 10px;
+}
+
+
+#contact_list ul {
+    margin: 0;
+    padding: 0;
+}
+
+.name_contact {
     margin: 4px;
     text-shadow: #ffffff 0 0 1px;
     padding: 4px 12px;
     height: 30px;
     font-family: Georgia,'Times New Roman',times,serif;
-    font-size: 16px;
+    font-size: 14px;
     color: #888888;
     border: 1px solid #cccccc;
     background: #fafafa;
@@ -901,12 +922,23 @@ text-align: center;
     text-decoration: none;
     display: block;
     line-height: 30px;
-    text-align: center;
+    text-align: left;
     vertical-align: middle;
     overflow: hidden;
     -webkit-transition: all 0.25s ease-in-out;
     -moz-transition: all 0.25s ease-in-out;
 }
+
+.name_contact:hover {
+    color: #ffffff;
+    background: #9fc3f2;
+    border: 1px solid #aaaacc;
+    -webkit-box-shadow: 0px 0px 4px #9fc3f2;
+    -moz-box-shadow: 0px 0px 4px #9fc3f2;
+
+}
+
+
 
 #todo_list ul li a {
     margin: 4px;
@@ -931,14 +963,7 @@ text-align: center;
     -moz-transition: all 0.25s ease-in-out;
 }
 
-#contact_list ul li a:hover {
-    color: #ffffff;
-    background: #9fc3f2;
-    border: 1px solid #aaaacc;
-    -webkit-box-shadow: 0px 0px 4px #9fc3f2;
-    -moz-box-shadow: 0px 0px 4px #9fc3f2;
-    height: 60px;
-}
+
 
 
 #todo_list{

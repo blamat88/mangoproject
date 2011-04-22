@@ -23,6 +23,14 @@ def view_all(request,username):
 
     return render_to_response('userena/contact.html',{'contacts':contacts, 'todo':todo} ,context_instance=RequestContext(request))
 
+def addhistory(request,contact,action):
+    c = Contact.objects.get(id=contact)
+    user = request.user.username
+    contact_history = ContactHistory(contact=c,history=action)
+    contact_history.save()
+    return HttpResponseRedirect('/accounts/'+user+'/contact')
+
+
 def view_contact(request,id):
     
     contact = Contact.objects.get(id=id)

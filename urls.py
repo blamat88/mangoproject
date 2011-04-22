@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
 from django.views.generic.simple import direct_to_template
-from mango.contacts.views import AddContact,UpContact,view_all, view_contact, AddEvent
+from mango.contacts.views import *
 
 
 from django.contrib import admin
@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     (r'^newContact/', UpContact),
     (r'^AddEvent/', AddEvent ),
     url(r'^accounts/(?P<username>[\.\w]+)/contact/', view_all,name="contact"),
+    url(r'^accounts/(?P<contact>[\.\w]+)/(?P<action>[\.\w]+)/contact/', addhistory,name="history"),
     url(r'^accounts/(?P<id>[\.\w]+)/viewcontact/',view_contact,name="viewcontact"),
     ( r'^face/', include( 'facebook.urls' ) ),
     url(r'^$',

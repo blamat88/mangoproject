@@ -5,6 +5,15 @@
 
 {% block content %}
 
+<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui-1.8.11.custom.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+    $("#contact_list").accordion({ header: "h2" });
+    });
+</script>
+
+
 <ul id="profile-nav">
     <li><a href="{% url userena_profile_detail user.username %}">{% trans "View profile" %}</a></li>
     <li class="selected"><a href="{% url contact user.username %}">{% trans "Contacts" %}</a></li>
@@ -27,58 +36,74 @@
 </form>
 
 <div id="contacts-container">
-<div id="contact_list">
-    <h3> <br />My Contacts</h3>
+    <h3> <br />Contacts</h3>
+    <div id="contact_list">
 
 
-    <ul>
-        {% if contacts %}
 
-        {% for contact in contacts %}
-        <li>
-            <a href="{% url viewcontact contact.id %}"> {{contact.name}}</a>
-        </li>
-        {% endfor %}
+        <ul>
+            {% if contacts %}
 
-        {% else %}
+            {% for contact in contacts %}
+            <li>
+                <h2><a class="name_contact" href="#"> {{contact.name}}</a></h2>
+                <div id="events">
+                    <div id="events_icons">
+                    <a class="icons" href="{% url history contact.id 'call' %}"> <img src="{{ MEDIA_URL }}img/call.png"></a>
+                    <a class="icons" href="{% url history contact.id 'send_email' %}"> <img src="{{ MEDIA_URL }}img/message.png"></a>
+                    <a class="icons" href="{% url history contact.id 'no_call' %}"> <img src="{{ MEDIA_URL }}img/no-call.png"></a>
+                    <a class="icons" href="#"> <img src="{{ MEDIA_URL }}img/calendar_icon.png"></a>
+                    </div>
+                    {% for h in contact.history.all %}
+                     <p>{{ h }}</p>
+                    {% endfor %}
 
+                </div>
+            </li>
+
+            {% endfor %}
+
+            {% else %}
+
+            {% endif %}
+
+        </ul>
+    </div>
+
+    <div id="todo_list">
+        <h3> <br />To Do</h3>
+
+
+        <ul>
+            {% if todo %}
+
+            {% for c in todo %}
+            <li>
+
+                <a href="#">
+                    {{c}}
+                </a>
+            </li>
+            {% endfor %}
+
+            {% else %}
+
+            {% endif %}
+
+        </ul>
+
+
+    </div>
+
+    <div id="event_list">
+        <h3> <br />Today</h3>
+
+        {% if profile.about_me %}
+        <p><br />{{ profile.about_me }}</p>
         {% endif %}
-
-    </ul>
-</div>
-
-<div id="todo_list">
-    <h3> <br />To Do</h3>
-
-
-    <ul>
-        {% if todo %}
-
-        {% for c in todo %}
-        <li>
-            
-            <a href="#">{{ c }}</a>
-        </li>
-        {% endfor %}
-
-        {% else %}
-
-        {% endif %}
-
-    </ul>
-
-
-    
-</div>
-
-<div id="event_list">
-    <h3> <br />Today</h3>
-
-    {% if profile.about_me %}
-    <p><br />{{ profile.about_me }}</p>
-    {% endif %}
-</div>
+    </div>
 </div>
 
 {% endblock %}
+
 
