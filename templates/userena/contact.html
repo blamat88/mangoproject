@@ -9,7 +9,7 @@
 <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui-1.8.11.custom.min.js"></script>
 <script type="text/javascript">
     $(function(){
-    $("#contact_list").accordion({ header: "h2" });
+    $("#contact_list").accordion({ header: "h2",autoHeight:false });
     });
 </script>
 
@@ -36,10 +36,10 @@
 </form>
 
 <div id="contacts-container">
+
+    <div id="contact-box">
     <h3> <br />Contacts</h3>
     <div id="contact_list">
-
-
 
         <ul>
             {% if contacts %}
@@ -52,7 +52,7 @@
                     <a class="icons" href="{% url history contact.id 'call' %}"> <img src="{{ MEDIA_URL }}img/call.png"></a>
                     <a class="icons" href="{% url history contact.id 'send_email' %}"> <img src="{{ MEDIA_URL }}img/message.png"></a>
                     <a class="icons" href="{% url history contact.id 'no_call' %}"> <img src="{{ MEDIA_URL }}img/no-call.png"></a>
-                    <a class="icons" href="#"> <img src="{{ MEDIA_URL }}img/calendar_icon.png"></a>
+                    <a class="icons" href="{% url newevent contact.id %}"> <img src="{{ MEDIA_URL }}img/calendar_icon.png"></a>
                     </div>
                     {% for h in contact.history.all %}
                      <p>{{ h }}</p>
@@ -69,20 +69,20 @@
 
         </ul>
     </div>
+</div>
 
+    <div id="todo-box">
+    <h3> <br />To Do</h3>
     <div id="todo_list">
-        <h3> <br />To Do</h3>
+        
 
 
         <ul>
             {% if todo %}
 
-            {% for c in todo %}
+            {% for t in todo %}
             <li>
-
-                <a href="#">
-                    {{c}}
-                </a>
+                <a href="{% url editevent t.id t.contact.id%}">{{t}}</a>
             </li>
             {% endfor %}
 
@@ -94,14 +94,14 @@
 
 
     </div>
+</div>
 
-    <div id="event_list">
-        <h3> <br />Today</h3>
-
-        {% if profile.about_me %}
-        <p><br />{{ profile.about_me }}</p>
-        {% endif %}
+    <div id="history-box">
+    <h3> <br />History</h3>
+    <div id="history_list">
+        
     </div>
+</div>
 </div>
 
 {% endblock %}

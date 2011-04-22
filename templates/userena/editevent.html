@@ -25,16 +25,17 @@
           {% endif %}
     {% csrf_token %}
     <fieldset>
-        
-        <legend>{% trans "New Event" %}</legend>
-            
+        <legend>{% trans "Edit Contact" %}</legend>
+
         <p>{{form.event.errors}}</p>
         <p><label>Event: </label>{{ form.event }}</p>
         <p>{{form.date_event.errors}}</p>
-        <p><label>Date Event: </label>{{ form.date_event }}</p>
+        <p><label>Event Date: </label>{{ form.date_event }}</p>
         <p>{{form.to_do.errors}}</p>
-        <p><label>To Do: </label>{{ form.to_do}}</p>
+        <p><label>To Do: </label>{{ form.to_do }}</p>
+ 
+
     </fieldset>
-    <input type="submit" value="AddEvent" />
+    <input type="submit" value="AddContact" />
 </form>
 {% endblock %}

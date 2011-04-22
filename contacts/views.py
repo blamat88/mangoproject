@@ -2,7 +2,7 @@ from urllib2 import Request
 from django.conf.urls.defaults import *
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
-from mango.contacts.models import Contact
+from mango.contacts.models import *
 from mango.todo.models import Event
 from mango.contacts.forms import ContactForm
 from mango.todo.forms import EventForm
@@ -16,6 +16,7 @@ from django.contrib.auth.models import User
 def view_all(request,username):
     user=User.objects.get(username=username)
     contacts = Contact.objects.filter(user=user)
+    
     todo = Event.objects.none()
     if contacts:
         for c in contacts:
@@ -50,14 +51,15 @@ def view_contact(request,id):
     return render_to_response('userena/viewcontact.html' ,{'form': form},context_instance=RequestContext(request))
 
 def UpContact(request):
-    up= 'New Contact Add succesfull'
-    return render_to_response('userena/contact_new.html', {'upcontact': up}, context_instance=RequestContext(request))
+    
+    return render_to_response('userena/check.html',context_instance=RequestContext(request))
 
 def AddContact(request):
 #    contact = get_object_or_404(Contact, user_id=2,)
 #
 #    contact.name = "Daniel"
 #    contact.save()
+    
     form = ContactForm(request.POST)
     if request.method == 'POST':
         form2 = Contact()
@@ -74,7 +76,7 @@ def AddContact(request):
             form2.email = email
             form2.mobil = mobil
             form2.save()
-            return HttpResponseRedirect('/newContact')
+            return HttpResponseRedirect('/check')
 #        if form.is_valid():
 #            return render_to_response('prueba.html', {'usera': usera}, context_instance=RequestContext(request))
 #            form.save()
@@ -85,7 +87,7 @@ def AddContact(request):
     return render_to_response('userena/addcontact_form.html', {'form': form}, context_instance=RequestContext(request))
 
 
-def AddEvent(request):
+def AddEvent(request,id):
     
     form = EventForm(request.POST)
     
@@ -94,13 +96,13 @@ def AddEvent(request):
         event = request.POST['event']
         date_event = request.POST['date_event']
         
-        contact = Contact.objects.get(id=request.POST['user_id'])
-
+        contact = Contact.objects.get(id=id)
+        
         try:
             to_do = request.POST['to_do']
         except:
             to_do = 0
-        if (contact):
+        if (form.is_valid()):
 
             form2.event = event
             form2.contact = contact
@@ -108,7 +110,29 @@ def AddEvent(request):
             form2.to_do = to_do
             form2.save()
        
-            return HttpResponseRedirect('/newContact')
+            return HttpResponseRedirect('/check')
     else:
         form = EventForm()
     return render_to_response('userena/addevent.html', {'form': form}, context_instance=RequestContext(request))
+
+def edit_event(request,id,contact):
+
+    event_model= Event.objects.get(id=id)
+    form = EventForm(request.POST, instance=event_model)
+    c=Contact.objects.get(id=contact)
+    if request.method == 'POST':
+        try:
+            to_do = request.POST['to_do']
+        except:
+            to_do = 0
+        if (form.is_valid()):
+            event_model.event = request.POST["event"]
+            event_model.date_event=request.POST["date_event"]
+            
+            event_model.contact = c
+            event_model.save()
+            return HttpResponseRedirect('/check')
+    else:
+        form = EventForm(instance=event_model)
+
+    return render_to_response('userena/editevent.html' ,{'form': form},context_instance=RequestContext(request))
