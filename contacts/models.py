@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.db import models
 
 class Contact(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User,null=True, blank=True)
     name = models.CharField(max_length=255)
     email = models.EmailField(null=False, blank=True)
     phone = models.CharField(max_length=10)
@@ -12,7 +12,7 @@ class Contact(models.Model):
 
     def __unicode__(self):
         return self.name
-
+    
 class ContactHistory(models.Model):
     contact = models.ForeignKey(Contact, related_name='history')
     history = models.CharField(max_length=255, choices=( ('llame','Llame'),('no-llame','No Llame'),('escribi','Escribi Email') ) )

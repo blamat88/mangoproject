@@ -5,7 +5,7 @@ breadandpepper.com
 ................................... */
 
 @import "reset.css";
-@import url(https://fonts.googleapis.com/css?family=Droid+Sans:regular,bold);
+
 
 
 /*	Main elements
@@ -18,6 +18,7 @@ html, body{
 
 #container{
     width: 1008px;
+    height: auto;
     margin: 30px auto 50px;
     -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
@@ -38,8 +39,28 @@ html, body{
 
 
 #content-container{
+    margin: 10px auto;
+    width: 1000px;
     padding: 12px;
+    height: auto;
     position: relative;
+ 
+}
+
+
+#conteiner-profile{
+    margin: 0px auto;
+    width: 260px;
+
+    height: auto;
+}
+
+#contacts-container{
+    margin: 0px auto;
+    width: 800px;
+    
+    height: auto;
+    
 }
 #header{
     height: 130px;
@@ -71,7 +92,7 @@ html, body{
 #nav li a{ 
     background: #ede9e4; 
     float: left; 
-    padding: 4px 4px 3px; 
+    padding: 4px 2px 3px;
     text-decoration: none; 
     outline: 0; 
     -webkit-border-radius: 10px; 
@@ -83,7 +104,7 @@ html, body{
 #nav li a span { 
     display: block; 
     color: #79aae1;
-    padding: 0.52em 1.0em 0.48em;
+    padding: 0.52em 0.8em 0.48em;
     text-shadow: rgba(255,254,255,0.45) 0 1px 0; 
     -webkit-box-shadow: rgba(33,33,33,0.45) 0px 0px 3px; 
     -moz-box-shadow: rgba(33,33,33,0.45) 0px 0px 3px; 
@@ -152,8 +173,10 @@ border-bottom-left-radius: 8px;
 
 #footer{
     background: url(../img/stripe.png) repeat-x center top;
-    margin: 40px 12px 0;
+    margin: 40px 12px;
     padding: 20px 0;
+    clear: both;
+    height: auto;
 }
 
 .white-box{
@@ -171,11 +194,11 @@ border-bottom-left-radius: 8px;
 }
 
 #details{
-    width: 140px;
-    margin: 0 0;
+    width: 240px;
+    margin-bottom: 30px;
     background-color: #fffeff;
     padding: 6px;
-    text-align: left;
+    text-align: center;
     -webkit-border-radius: 7px; 
     -moz-border-radius: 7px; 
     border-radius: 7px;
@@ -183,6 +206,7 @@ border-bottom-left-radius: 8px;
     -webkit-box-shadow: 0 0 3px #999;
     box-shadow: 0 0 3px #999;
     overflow: hidden;
+   
 }
 
 #details img{
@@ -358,6 +382,7 @@ form p {
     color: #79aae1;
 }
 
+
 form p label {
     width: 160px;
     padding: 10px 20px 0 0;
@@ -376,7 +401,7 @@ form p.checkbox {
 form p.checkbox label {
     width: inherit;
     float: none;
-    text-align: left;
+    text-align:  left;
     padding: 0 0 0 175px;
 }
 
@@ -485,8 +510,9 @@ ul.errorlist li {
 }
 
 legend {
+    text-align: center;
     width: 500px;
-    padding: 5px 0 6px 0;
+    padding: 5px 0px 6px 0;
     font-size: 1.3em;
     color: #79aae1;
     font-weight: bold;
@@ -543,7 +569,7 @@ ul#profile-nav li{
 
 ul#profile-nav li.selected a{
     color: #111;
-    padding: 8px 20px 8px;
+    padding: 8px 18px 8px;
     text-decoration: none;
 	background-color: #f6f4f2;
 	-moz-border-radius-topleft: 8px;
@@ -566,7 +592,7 @@ ul#profile-nav li a{
     display: block;
     height: 20px;
     line-height: 25px;
-    padding: 8px 23px 8px;
+    padding: 10px 12px 8px;
     color: #999997;
 	text-align: center;
 }
@@ -801,7 +827,157 @@ min-height: 52px;
     font-size: 0.9em;
     font-weight: bold;
     text-decoration: none;
-}   
+}
+
+#contact_list{
+    height: 300px;
+    padding: 6px;
+    width: 235px;
+    margin-bottom: 60px;
+    background-color: #fffeff;
+    text-align:left;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    -moz-box-shadow: 0 0 3px #999;
+    -webkit-box-shadow: 0 0 3px #999;
+    box-shadow: 0 0 3px #999;
+    float:left;
+    overflow: auto;
+}
+
+#contact_edit{
+    height: 300px;
+    padding: 6px;
+    width: 235px;
+    margin-bottom: 60px;
+    background-color: #fffeff;
+    text-align:left;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    -moz-box-shadow: 0 0 3px #999;
+    -webkit-box-shadow: 0 0 3px #999;
+    box-shadow: 0 0 3px #999;
+    float:left;
+    overflow: auto;
+}
+
+
+#contact_list h3{
+margin-bottom: 20px;
+text-align: center;
+}
+
+#todo_list h3{
+margin-bottom: 25px;
+text-align: center;
+}
+
+
+#event_list h3{
+margin-bottom: 20px;
+text-align: center;
+}
+
+#contact_list ul {
+    margin: 0;
+    padding: 0;
+}
+
+#contact_list ul li a {
+    margin: 4px;
+    text-shadow: #ffffff 0 0 1px;
+    padding: 4px 12px;
+    height: 30px;
+    font-family: Georgia,'Times New Roman',times,serif;
+    font-size: 16px;
+    color: #888888;
+    border: 1px solid #cccccc;
+    background: #fafafa;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    line-height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+}
+
+#todo_list ul li a {
+    margin: 4px;
+    text-shadow: #ffffff 0 0 1px;
+    padding: 4px 12px;
+    height: 30px;
+    font-family: Georgia,'Times New Roman',times,serif;
+    font-size: 16px;
+    color: #888888;
+    border: 1px solid #cccccc;
+    background: #fafafa;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    line-height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+}
+
+#contact_list ul li a:hover {
+    color: #ffffff;
+    background: #9fc3f2;
+    border: 1px solid #aaaacc;
+    -webkit-box-shadow: 0px 0px 4px #9fc3f2;
+    -moz-box-shadow: 0px 0px 4px #9fc3f2;
+    height: 60px;
+}
+
+
+#todo_list{
+    height: 300px;
+    width: 235px;  
+    margin-bottom: 60px;
+    margin-left: 20px;
+    background-color: #fffeff;
+    padding: 6px;
+    text-align:left;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    -moz-box-shadow: 0 0 3px #999;
+    -webkit-box-shadow: 0 0 3px #999;
+    box-shadow: 0 0 3px #999;
+    overflow: hidden;
+    float:left;
+
+}
+
+#event_list{
+    height: 300px;
+    width: 235px;
+    margin-bottom: 60px;
+    margin-left: 20px;
+    background-color: #fffeff;
+    padding: 6px;
+    text-align:left;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    -moz-box-shadow: 0 0 3px #999;
+    -webkit-box-shadow: 0 0 3px #999;
+    box-shadow: 0 0 3px #999;
+    overflow: hidden;
+    float: left;
+
+}
 
 
 

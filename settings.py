@@ -112,6 +112,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'mango.profiles',
     'mango.contacts',
+    'mango.todo',
     'mango.facebook',
     'easy_thumbnails',
     'guardian',

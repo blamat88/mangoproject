@@ -1,6 +1,8 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
 from django.views.generic.simple import direct_to_template
+from mango.contacts.views import AddContact,UpContact,view_all, view_contact, AddEvent
+
 
 from django.contrib import admin
 admin.autodiscover()
@@ -10,6 +12,11 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     (r'^accounts/', include('userena.urls')),
     (r'^messages/', include('userena.contrib.umessages.urls')),
+    (r'^AddContact/', AddContact),
+    (r'^newContact/', UpContact),
+    (r'^AddEvent/', AddEvent ),
+    url(r'^accounts/(?P<username>[\.\w]+)/contact/', view_all,name="contact"),
+    url(r'^accounts/(?P<id>[\.\w]+)/viewcontact/',view_contact,name="viewcontact"),
     ( r'^face/', include( 'facebook.urls' ) ),
     url(r'^$',
         direct_to_template,

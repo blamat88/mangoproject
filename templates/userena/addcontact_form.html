@@ -7,27 +7,42 @@
 
 <ul id="profile-nav">
      <li><a href="{% url userena_profile_detail user.username %}">{% trans "View profile" %}</a></li>
-     <li><a onclick="" href="{% url contact user.username %}">{% trans "Contacts" %}</a></li>
+     <li class="selected"><a href="{% url contact user.username %}">{% trans "Contact" %}</a></li>
      <li><a href="{% url userena_profile_edit user.username %}">{% trans "Edit details" %}</a></li>
      <li><a href="{% url userena_password_change user.username %}">{% trans "Change password" %}</a></li>
-     <li class="selected"><a href="{% url userena_email_change user.username %}">{% trans "Change email" %}</a></li>
+     <li><a href="{% url userena_email_change user.username %}">{% trans "Change email" %}</a></li>
  </ul>
 
 <form action="" method="post">
     {% if user.username == account.user.username %}
           <ul id="box-nav">
               <li class="first"><a href="{% url userena_detail user.username %}"><span>{% trans 'View profile' %}</span></a></li>
-              <li><a onclick="" href="{% url contact user.username %}">{% trans "Contacts" %}</a></li>
+              <li  class="last selected"><a href="{% url contact user.username %}">{% trans "Contact" %}</a></li>
               <li><a href="{% url userena_edit account.user.username %}">{% trans "Edit profile" %}</a></li>
               <li><a href="{% url userena_password_change account.user.username %}">{% trans "Change password" %}</a></li>
-              <li class="last selected"><a href="{% url userena_email_change account.user.username %}">{% trans "Change email" %}</a></li>
+              <li><a href="{% url userena_email_change account.user.username %}">{% trans "Change email" %}</a></li>
           </ul>
           {% endif %}
     {% csrf_token %}
     <fieldset>
-        <legend>{% trans "Change email address" %}</legend>
-        {{ form.as_p }}
+        <legend>{% trans "Contact" %}</legend>
+        <input type="hidden" value="{{user.id}}" id="user_id" name="user_id">
+        <p>{{form.name.errors}}</p>
+        <p><label>Name: </label>{{ form.name }}</p>
+        <p>{{form.email.errors}}</p>
+        <p><label>Email: </label>{{ form.email }}</p>
+        <p>{{form.phone.errors}}</p>
+        <p><label>Phone: </label>{{ form.phone }}</p>
+        <p>{{form.mobil.errors}}</p>
+        <p><label>Mobil: </label>{{ form.mobil }}</p>
     </fieldset>
-    <input type="submit" value="{% trans "Change email" %}" />
+    <input type="submit" value="AddContact" />
 </form>
 {% endblock %}
+
+
+
+
+
+
+
