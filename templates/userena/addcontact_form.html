@@ -26,7 +26,7 @@
     {% csrf_token %}
     <fieldset>
         <legend>{% trans "Contact" %}</legend>
-        <input type="hidden" value="{{user.id}}" id="user_id" name="user_id">
+      
         <p>{{form.name.errors}}</p>
         <p><label>Name: </label>{{ form.name }}</p>
         <p>{{form.email.errors}}</p>

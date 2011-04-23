@@ -13,8 +13,8 @@ class Event(models.Model):
     DETAIL_EVENT_CHOICES = (('call', _('Call')),('send email', _('Send Email')),)
     contact = models.ForeignKey(Contact, related_name='event',blank=True,null=True)
     event = models.CharField(_('detail event'),
-            choices=DETAIL_EVENT_CHOICES,blank=True,null=True,max_length=255)
-    date_event = models.DateField(_('event date'),blank=True,null=True)
+            choices=DETAIL_EVENT_CHOICES,blank=False,null=False,max_length=255)
+    date_event = models.DateField(_('event date'),blank=False,null=False)
     to_do = models.BooleanField(blank=True,default=0)
 
     def __unicode__(self):

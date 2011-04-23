@@ -12,12 +12,18 @@ class Contact(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    class Meta:
+        ordering = ["name"]
     
 class ContactHistory(models.Model):
     contact = models.ForeignKey(Contact, related_name='history')
-    history = models.CharField(max_length=255, choices=( ('llame','Llame'),('no-llame','No Llame'),('escribi','Escribi Email') ) )
+    history = models.CharField(max_length=255, choices=( ('call','Call'),('no-call','No Call'),('send-email','Send Email') ) )
     created = CreationDateTimeField()
     edited = ModificationDateTimeField()
 
     def __unicode__(self):
-        return 'Yo %s a %s (%s)' % (self.history, self.contact, self.created)
+        return 'I %s to %s (%s)' % (self.history, self.contact, self.created)
+
+    class Meta:
+        ordering = ["-edited"]
