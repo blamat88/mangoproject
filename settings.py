@@ -20,7 +20,7 @@ DATABASES = {
         'ENGINE': 'mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'book',                      # Or path to database file if using sqlite3.
         'USER': 'root',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
+        'PASSWORD': '1234',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
@@ -71,7 +71,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.media",
     "django.contrib.messages.context_processors.messages",
     "django.core.context_processors.request",
-    'django_facebook.context_processors.facebook',
+    
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -79,7 +79,7 @@ AUTHENTICATION_BACKENDS = (
     'guardian.backends.ObjectPermissionBackend',
     'django.contrib.auth.backends.ModelBackend',
     'mango.facebook.backends.FacebookBackend',
-    'django_facebook.auth_backends.FacebookBackend',
+    
 )
 
 ROOT_URLCONF = 'mango.urls'

@@ -27,7 +27,7 @@ urlpatterns = patterns('',
         {'template': 'static/promo.html'},
         name='promo'),
     (r'^i18n/', include('django.conf.urls.i18n')),
-    (r'^media/mugshots/(?P<path>.*)$', 'django.views.static.serve', {'document_root': '/home/user/mango/media/mugshots'}),
+    (r'^media/mugshots/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT+'/mugshots'}),
 )
 
 if settings.DEBUG:
