@@ -34,6 +34,15 @@ def view_all(request,username):
 
     return render_to_response('userena/contact.html',{'contacts':contacts, 'later':later,'today':today,'after':after} ,context_instance=RequestContext(request))
 
+def view_history(request):
+    if request.is_ajax():
+
+        id = request.GET.get( 'q' )
+        if id is not None:
+            contact = Contact.objects.get(id=id)
+        template = 'userena/history.html'
+        data = {'contact':contact}
+        return render_to_response(template,data, context_instance=RequestContext(request))
 
 def addhistory(request,contact,action):
     c = Contact.objects.get(id=contact)

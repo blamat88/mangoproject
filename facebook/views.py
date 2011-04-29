@@ -44,7 +44,7 @@ def login(request):
             if user:
                 if user.is_active:
                     
-                    #auth.login(request, user)
+                    auth.login(request, user)
                     #urllib.urlopen("http://m.facebook.com/logout.php?next=http://localhost:8000/face")
                     return render_to_response('logout.html',{ },context_instance=RequestContext(request))
                 else:

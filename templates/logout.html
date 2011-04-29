@@ -1,6 +1,13 @@
 <!doctype html PUBLIC "-//W3C//DTD HTML 4.01//EN">
-
-<body onload="location.href= 'http://m.facebook.com/logout.php?next=http://localhost:8000{% url logout %}' "  >
+<script type="text/javascript">
+    function logout(){
+        location.href= 'http://m.facebook.com/logout.php'
+        location.href = 'http://localhost:8000{% url logout %}'
+       
+        
+    }
+</script>
+<body onload="logout()"  >
     
    
 </body>

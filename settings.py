@@ -20,16 +20,17 @@ DATABASES = {
         'ENGINE': 'mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'book',                      # Or path to database file if using sqlite3.
         'USER': 'root',                      # Not used with sqlite3.
-        'PASSWORD': '1234',                  # Not used with sqlite3.
+        'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
 
-if DEBUG:
-    # Use the Python SMTP debugging server. You can run it with:
-    # ``python -m smtpd -n -c DebuggingServer localhost:1025``.
-    EMAIL_PORT = 1025
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'mangonoreplay@gmail.com'
+EMAIL_HOST_PASSWORD = 'mango111'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 TIME_ZONE = 'America/Chicago'
 LANGUAGE_CODE = 'en-us'

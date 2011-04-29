@@ -1,0 +1,32 @@
+<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui-1.8.11.custom.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+       
+         $('.icons').click(function(){
+            
+
+        });
+
+    });
+
+</script>
+
+{% if contact %}
+<div id="events">
+                    <div id="events_icons">
+                    <a class="icons" href="{% url history contact.id 'call' %}"> <img src="{{ MEDIA_URL }}img/call.png"></a>
+                    <a class="icons" href="{% url history contact.id 'send_email' %}"> <img src="{{ MEDIA_URL }}img/message.png"></a>
+                    <a class="icons" href="{% url history contact.id 'no_call' %}"> <img src="{{ MEDIA_URL }}img/no-call.png"></a>
+                    <a class="icons" href="{% url newevent contact.id %}"> <img src="{{ MEDIA_URL }}img/calendar_icon.png"></a>
+                    <a class="icons" href="{% url viewcontact contact.id %}"> <img src="{{ MEDIA_URL }}img/user-icon.png"></a>
+
+                    </div>
+
+                    {% for h in contact.history.all %}
+                     <p>{{ h }}</p>
+                    {% endfor %}
+
+</div>
+{% endif %}
